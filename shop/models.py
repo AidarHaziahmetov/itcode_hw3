@@ -89,7 +89,7 @@ class Product(models.Model):
         max_length=200,
         verbose_name="Название",
     )
-    image = models.ImageField(upload_to="", blank=True, verbose_name="Фото")
+    image = models.ImageField(upload_to="", blank=True, verbose_name="Фото", null=True)
     description = models.TextField(
         blank=True,
         verbose_name="Описание",
@@ -113,6 +113,9 @@ class Product(models.Model):
 
     def is_in_stock(self):
         return self.stock > 0
+
+    def get_category(self):
+        return self.category
 
     def get_discount_price(self, discount=None):
         if discount:

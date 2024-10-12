@@ -4,20 +4,19 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0004_remove_product_category_product_category'),
+        ("shop", "0004_remove_product_category_product_category"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name='product',
-            name='image',
-            field=models.ImageField(blank=True, upload_to='', verbose_name='Фото'),
+            model_name="product",
+            name="image",
+            field=models.ImageField(blank=True, upload_to="", verbose_name="Фото"),
         ),
         migrations.AlterField(
-            model_name='profile',
-            name='avatar',
-            field=models.ImageField(blank=True, upload_to='', verbose_name='Аватар'),
+            model_name="profile",
+            name="avatar",
+            field=models.ImageField(blank=True, upload_to="", verbose_name="Аватар"),
         ),
     ]

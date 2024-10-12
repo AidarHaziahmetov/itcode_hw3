@@ -4,20 +4,32 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0002_remove_category_slug_alter_category_parent'),
+        ("shop", "0002_remove_category_slug_alter_category_parent"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='product',
-            name='size',
+            model_name="product",
+            name="size",
         ),
         migrations.AddField(
-            model_name='orderitem',
-            name='size',
-            field=models.CharField(choices=[('XS', 'XS'), ('S', 'S'), ('M', 'M'), ('L', 'L'), ('XL', 'XL'), ('XXL', 'XXL'), ('XXXL', 'XXXL')], default=1, max_length=4, verbose_name='Размер'),
+            model_name="orderitem",
+            name="size",
+            field=models.CharField(
+                choices=[
+                    ("XS", "XS"),
+                    ("S", "S"),
+                    ("M", "M"),
+                    ("L", "L"),
+                    ("XL", "XL"),
+                    ("XXL", "XXL"),
+                    ("XXXL", "XXXL"),
+                ],
+                default=1,
+                max_length=4,
+                verbose_name="Размер",
+            ),
             preserve_default=False,
         ),
     ]

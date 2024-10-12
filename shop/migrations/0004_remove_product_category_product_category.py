@@ -4,19 +4,20 @@ from django.db import migrations, models
 
 
 class Migration(migrations.Migration):
-
     dependencies = [
-        ('shop', '0003_remove_product_size_orderitem_size'),
+        ("shop", "0003_remove_product_size_orderitem_size"),
     ]
 
     operations = [
         migrations.RemoveField(
-            model_name='product',
-            name='category',
+            model_name="product",
+            name="category",
         ),
         migrations.AddField(
-            model_name='product',
-            name='category',
-            field=models.ManyToManyField(related_name='clothes', to='shop.category', verbose_name='Категория'),
+            model_name="product",
+            name="category",
+            field=models.ManyToManyField(
+                related_name="clothes", to="shop.category", verbose_name="Категория"
+            ),
         ),
     ]
