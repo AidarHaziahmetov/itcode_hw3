@@ -9,7 +9,7 @@
         </div>
         <div class="col-md-6">
             <h1>{{ product.name }}</h1>
-            <p>Категории: {% for category in product.category.all %}{{ category }}{% endfor %}</p>
+            <p>Категории: {% for category in product.category.all %}{{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
             <p>Описание: {{ product.description|default:"Хорошая вещь" }}</p>
             <p>Цена: {{ product.price|default:"Цена не указана" }}</p>
             <p>Остаток на складе: {{ product.stock|default:"неизвестно" }}</p>
