@@ -67,7 +67,7 @@
 ![img_18.png](images/img_18.png)
 ### OR
 #### Заказы от пользователей Aidar и Rina
-![img_19.png](shop/img_19.png)
+![img_19.png](images/img_19.png)
 #### Товары не из категорий Платья и Трусы
 ![img_20.png](images/img_20.png)
 #### Товары из категорий Платья и Трусы

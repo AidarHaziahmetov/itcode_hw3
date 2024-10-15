@@ -3,9 +3,7 @@ import os
 from PIL import Image
 from django.conf import settings
 from django.http import HttpResponse
-from django.shortcuts import render
-from django.urls import reverse_lazy, reverse
-from django.views import View
+from django.urls import reverse_lazy
 from django.views.generic import (
     ListView,
     TemplateView,
@@ -77,5 +75,3 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy("shop:catalog")
 
 
-def baseview(request):
-    return render(request, "base.html")
