@@ -16,10 +16,13 @@ Including another URLconf
 """
 
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
 from shop.views import display_image
+import shop.urls as shop_urls
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("media/<str:image_name>", display_image, name="display_image"),
+    path("shop/", include((shop_urls, 'shop'), 'shop'), name="shop"),
+
 ]

@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Каталог товаров{% endblock %}
+{% block load_css %}<link rel="stylesheet" href="{% static 'shop/css/product_list.css'%}">{% endblock %}
+{% block content %}
+  <h1>Каталог товаров</h1>
+  <div class="row">
+    {% for product in products %}
+      <div class="col-md-4 mb-4">
+        <div class="card">
+          <img src="/media/{{ product.image }}" alt="{{ product.name }}" class="card-img-top">
+          <div class="card-body">
+            <h5 class="card-title">{{ product.name }}</h5>
+            <p class="card-text">Цена: {{ product.price }}</p>
+            <a href="{% url 'shop:product_detail' product.id %}" class="btn btn-primary">Подробнее</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+{% endblock %}

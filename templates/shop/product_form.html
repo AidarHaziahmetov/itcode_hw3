@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {% if product.name %}
+        Редактирование товара
+    {% else %}
+        Добавление товара
+    {% endif %}
+{% endblock %}
+{% block load_css %}<link rel="stylesheet" href="{% static 'shop/css/product_form.css' %}">{% endblock %}
+{% block content %}
+    <h1>{% block header %}{% endblock %}</h1>
+
+    <form method="post" enctype="multipart/form-data" class="product-create-form">
+    {% csrf_token %}
+    {{ form }}
+
+        {% if form.errors %}
+            {{ form.errors }}
+        {% endif %}
+    <button type="submit" class="btn btn-primary">Сохранить</button>
+</form>
+
+{% endblock %}

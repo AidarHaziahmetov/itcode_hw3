@@ -79,17 +79,17 @@ class Category(models.Model):
 
 
 class Product(models.Model):
+    name = models.CharField(
+        max_length=200,
+        verbose_name="Название",
+    )
+    image = models.ImageField(upload_to="", blank=True, verbose_name="Фото", null=True)
     category = models.ManyToManyField(
         Category,
         related_name="clothes",
         verbose_name="Категория",
         blank=False,
     )
-    name = models.CharField(
-        max_length=200,
-        verbose_name="Название",
-    )
-    image = models.ImageField(upload_to="", blank=True, verbose_name="Фото", null=True)
     description = models.TextField(
         blank=True,
         verbose_name="Описание",

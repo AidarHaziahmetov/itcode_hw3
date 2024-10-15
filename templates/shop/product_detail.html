@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block title %}{{ product.name }}{% endblock %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <img src="/media/{{ product.image }}" alt="{{ product.name }}" class="img-fluid">
+        </div>
+        <div class="col-md-6">
+            <h1>{{ product.name }}</h1>
+            <p>{{ product.description }}</p>
+            <p>Цена: {{ product.price }}</p>
+            <p>Остаток на складе: {{ product.stock }}</p>
+{#{% url 'add_to_cart' product.id %}#}
+            <a href="#" class="btn btn-primary add-cart">Добавить в корзину</a>
+            <a href="{% url 'shop:product_update' product.id %}" class="btn btn-warning">Обновить данные</a>
+            <a href="{% url 'shop:product_delete' product.id %}" class="btn btn-danger">Удалить</a>
+        </div>
+    </div>
+
+{% endblock %}

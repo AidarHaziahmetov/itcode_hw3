@@ -1,0 +1,67 @@
+.product-create-form {
+  /* Добавляем отступы вокруг формы */
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.product-create-form label {
+  /* Увеличиваем размер шрифта для меток */
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+.product-create-form input[type="text"],
+.product-create-form input[type="number"],
+.product-create-form textarea {
+  /* Стиль для полей ввода */
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.product-create-form input[type="file"] {
+  /* Стиль для элемента загрузки файла */
+  margin-bottom: 10px;
+}
+
+.product-create-form button[type="submit"] .add-cart {
+  background-color: #007bff; /* Голубой цвет */
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.product-create-form button[type="submit"]:hover {
+  /* Эффект при наведении курсора на кнопку */
+  background-color: #0062cc; /* Темнее голубой */
+}
+.product-create-form button[type="submit"] {
+  background-color: #ffa500;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.product-create-form button[type="submit"] :hover {
+  /* Эффект при наведении курсора на кнопку */
+  background-color: #ff8c00;
+}
+.product-create-form button[type="submit"] .delete {
+  background-color: #ffa500;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.product-create-form button[type="submit"] .delete:hover {
+  /* Эффект при наведении курсора на кнопку */
+  background-color: #ff8c00;
+}
