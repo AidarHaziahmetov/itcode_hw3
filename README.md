@@ -1,19 +1,19 @@
 ﻿# Home work 6
 #### Фильтр по названию и описанию
-![img.png](img.png)
-![img_1.png](img_1.png)
+![img.png](images/hw6/img.png)
+![img_1.png](images/hw6/img_1.png)
 #### Фильтр по цене
-![img_2.png](img_2.png)
+![img_2.png](images/hw6/img_2.png)
 #### Фильтр по наличию
-![img_3.png](img_3.png)
-![img_4.png](img_4.png)![img_5.png](img_5.png)
+![img_3.png](images/hw6/img_3.png)
+![img_4.png](images/hw6/img_4.png)![img_5.png](images/hw6/img_5.png)
 #### Фильтр по названию и описанию v2
-![img_6.png](img_6.png)
-![img_7.png](img_7.png)
+![img_6.png](images/hw6/img_6.png)
+![img_7.png](images/hw6/img_7.png)
 #### Фильтр по категориям
-![img_8.png](img_8.png)
-![img_9.png](img_9.png)
-![img_10.png](img_10.png)
+![img_8.png](images/hw6/img_8.png)
+![img_9.png](images/hw6/img_9.png)
+![img_10.png](images/hw6/img_10.png)
 
 
 
