@@ -2,23 +2,45 @@
 {% load static %}
 
 {% block title %}Каталог товаров{% endblock %}
-{% block load_css %}<link rel="stylesheet" href="{% static 'shop/css/product_list.css'%}">{% endblock %}
-{% block content %}
-  <h1>Каталог товаров</h1>
-  <div class="row">
-    {% for product in products  %}
-      <div class="col-md-4 mb-4">
-        <div class="card">
-          <img src="/media/{{ product.image }}" alt="{{ product.name }}" class="card-img-top">
-          <div class="card-body">
-            <h5 class="card-title">{{ product.name }}</h5>
-            <p class="card-text">Описание: {{ product.description|default:"Хорошая вещь"|truncatechars:20 }}</p>
-            <p class="card-text">Цена: {{ product.price }}</p>
-            <a href="{% url 'shop:product_detail' product.id %}" class="btn btn-primary">Подробнее</a>
-          </div>
-        </div>
+{% block load_css %}
+    <link rel="stylesheet" href="{% static 'shop/css/product_list.css' %}">{% endblock %}
+{% block sidebar %}
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+    <h2 class="accordion-header" id="headingOne">
+      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+        Фильтры
+      </button>
+    </h2>
+    <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+          <form method="get" >
+            {% csrf_token %}
+            {{ filter.form.as_p }}
+            <button type="submit" class="btn btn-primary">Поиск</button>
+        </form>
       </div>
-    {% endfor %}
+    </div>
   </div>
+</div>
+{% endblock %}
+{% block content %}
+    <h1>Каталог товаров</h1>
+    <div class="row">
+        {% for product in products %}
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="/media/{{ product.image }}" alt="{{ product.name }}" class="card-img-top">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">
+                            Описание: {{ product.description|default:"Хорошая вещь"|truncatechars:20 }}</p>
+                        <p class="card-text">Цена: {{ product.price }}</p>
+                        <a href="{% url 'shop:product_detail' product.id %}" class="btn btn-primary">Подробнее</a>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
 
 {% endblock %}

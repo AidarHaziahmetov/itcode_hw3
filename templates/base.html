@@ -1,3 +1,4 @@
+{% load django_bootstrap5 %}
 {% load static %}
 <!DOCTYPE html>
 <html lang="ru">
@@ -7,6 +8,7 @@
     <title>{% block title %}{% endblock %}</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="{% static 'shop/css/style.css'%}">
+    {% bootstrap_css %}
     {% block load_css %}{% endblock %}
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
@@ -31,7 +33,9 @@
             </div>
         </nav>
     </header>
-
+    <div class="container">
+        {% block sidebar %}{% endblock %}
+    </div>
     <main class="container">
         {% block content %}
         {% endblock %}
@@ -45,4 +49,5 @@
     {% block scripts %}
     {% endblock %}
 </body>
+{% bootstrap_javascript %}
 </html>

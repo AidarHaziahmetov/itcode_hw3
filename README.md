@@ -1,4 +1,26 @@
-﻿# hw4
+﻿# Home work 6
+#### Фильтр по названию и описанию
+![img.png](img.png)
+![img_1.png](img_1.png)
+#### Фильтр по цене
+![img_2.png](img_2.png)
+#### Фильтр по наличию
+![img_3.png](img_3.png)
+![img_4.png](img_4.png)![img_5.png](img_5.png)
+#### Фильтр по названию и описанию v2
+![img_6.png](img_6.png)
+![img_7.png](img_7.png)
+#### Фильтр по категориям
+![img_8.png](img_8.png)
+![img_9.png](img_9.png)
+![img_10.png](img_10.png)
+
+
+
+
+
+
+# hw4
 `Python 3.12.4`
 ## Задание 1
 #### Добавил категорию Джинсы и вывел все категории

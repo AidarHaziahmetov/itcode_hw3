@@ -1,4 +1,5 @@
 import os
+from typing import Type
 
 from PIL import Image
 from django.conf import settings
@@ -12,9 +13,11 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
+from django_filters.views import FilterView
 
 from shop.forms import ProductForm
 from shop.models import Product
+from shop.filters import ProductFilter
 
 
 # Create your views here.
@@ -41,10 +44,11 @@ class ProductListTemplateView(TemplateView):
         return context
 
 
-class ProductListView(ListView):
+class ProductListView(FilterView):
     model = Product
     template_name = "shop/product_list.html"
     context_object_name = "products"
+    filterset_class: Type[ProductFilter] = ProductFilter
 
 
 class ProductDetailView(DetailView):

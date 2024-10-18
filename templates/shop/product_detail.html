@@ -12,7 +12,7 @@
             <p>Категории: {% for category in product.category.all %}{{ category }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
             <p>Описание: {{ product.description|default:"Хорошая вещь" }}</p>
             <p>Цена: {{ product.price|default:"Цена не указана" }}</p>
-            <p>Остаток на складе: {{ product.stock|default:"неизвестно" }}</p>
+            <p>Остаток на складе: {{ product.stock }}</p>
 {#{% url 'add_to_cart' product.id %}#}
             <a href="#" class="btn btn-primary add-cart">Добавить в корзину</a>
             <a href="{% url 'shop:product_update' product.id %}" class="btn btn-warning">Обновить данные</a>
