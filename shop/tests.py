@@ -29,13 +29,15 @@ class ShopTestCase(TestCase):
         old_stock = self.product.stock
         response = self.client.post(url, {
             'name': "new_name",
-            'price': old_price,
+            'price': old_price+1,
             'description': old_description,
             'stock': old_stock
         })
         self.product.refresh_from_db()
         self.assertEqual(response.status_code, 302)
         self.assertNotEqual(self.product.name, old_name)
+        self.assertNotEqual(self.product.price, old_price)
+        self.assertEqual(self.product.description, old_description)
 
     def test_delete_product(self):
         url = reverse('product_delete', kwargs={'pk': self.product.pk})
