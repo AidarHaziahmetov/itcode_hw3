@@ -5,6 +5,4 @@ from shop.models import Product, Category, User
 class ProductForm(ModelForm):
     class Meta:
         model = Product
-        fields = '__all__'
-    category = ModelMultipleChoiceField(queryset=Category.objects.filter(parent__clothes__category__isnull=True),widget=CheckboxSelectMultiple())
-    
+        fields = ['name','price','description','price']

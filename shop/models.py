@@ -100,8 +100,8 @@ class Product(models.Model):
         decimal_places=2,
         verbose_name="Цена",
     )
-    created = models.DateTimeField(auto_now_add=True, verbose_name="Создан")
-    updated = models.DateTimeField(auto_now=True, verbose_name="Обновлен")
+    created = models.DateTimeField(auto_now_add=True, verbose_name="Создан", null=True)
+    updated = models.DateTimeField(auto_now=True, verbose_name="Обновлен", null=True)
 
     class Meta:
         ordering = ("name",)

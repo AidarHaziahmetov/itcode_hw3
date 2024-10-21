@@ -25,12 +25,10 @@ class ShopTestCase(TestCase):
         url = reverse('product_update', kwargs={'pk': self.product.pk})
         old_name = self.product.name
         old_price = self.product.price
-        response = self.client.post(url, {'name': "new_name"},format="json")
-        # self.assertNotEqual(response, "new_name")
-        print(old_name)
+        response = self.client.post(url, {'name': "new_name",'price': old_price},format="json")
         self.product.refresh_from_db()
-        print(models.Product.objects.get(pk=self.product.pk).name)
         self.assertEqual(response.status_code, 302)
+        self.assertNotEqual(self.product.name, old_name)
 
     def test_delete_product(self):
         url = reverse('product_delete', kwargs={'pk': self.product.pk})
@@ -39,22 +37,15 @@ class ShopTestCase(TestCase):
         self.assertEqual(response.status_code, 302)
         self.assertGreater(old_product_count, models.Product.objects.count())
 
-    # def test_create_product(self):
-    #     url = reverse('product_create')
-    #     # new_product = factories.ProductFactory()
-    #     old_product_count = models.Product.objects.count()
-    #     print(models.Product.objects.all())
-    #     response = self.client.post(url, {
-    #         'name': 'new_name1',
-    #         'price': self.product.price+1,
-    #         'description': self.product.description,
-    #         'image': self.product.image,
-    #         'category': self.product.category,
-    #         'stock': self.product.stock,
-    #         'created': self.product.created,
-    #         'updated': self.product.updated,
-    #     })
-    #     self.product.refresh_from_db()
-    #     print(models.Product.objects.all())
-    #     self.assertEqual(response.status_code, 302)
-    #     self.assertLess(old_product_count, models.Product.objects.count())
+    def test_create_product(self):
+        url = reverse('product_create')
+        old_product_count = models.Product.objects.count()
+        response = self.client.post(url, {
+            'name': 'new_name1',
+            'price': self.product.price+1,
+            'description': self.product.description,
+            'stock': self.product.stock,
+        })
+        self.product.refresh_from_db()
+        self.assertEqual(response.status_code, 302)
+        self.assertLess(old_product_count, models.Product.objects.count())
