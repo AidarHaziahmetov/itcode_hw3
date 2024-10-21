@@ -25,7 +25,14 @@ class ShopTestCase(TestCase):
         url = reverse('product_update', kwargs={'pk': self.product.pk})
         old_name = self.product.name
         old_price = self.product.price
-        response = self.client.post(url, {'name': "new_name",'price': old_price},format="json")
+        old_description = self.product.description
+        old_stock = self.product.stock
+        response = self.client.post(url, {
+            'name': "new_name",
+            'price': old_price,
+            'description': old_description,
+            'stock': old_stock
+        })
         self.product.refresh_from_db()
         self.assertEqual(response.status_code, 302)
         self.assertNotEqual(self.product.name, old_name)
@@ -39,13 +46,14 @@ class ShopTestCase(TestCase):
 
     def test_create_product(self):
         url = reverse('product_create')
-        old_product_count = models.Product.objects.count()
+        old_products_count = models.Product.objects.count()
         response = self.client.post(url, {
             'name': 'new_name1',
-            'price': self.product.price+1,
+            'price': self.product.price + 1,
             'description': self.product.description,
-            'stock': self.product.stock,
+            'stock': self.product.stock
         })
         self.product.refresh_from_db()
         self.assertEqual(response.status_code, 302)
-        self.assertLess(old_product_count, models.Product.objects.count())
+        self.assertLess(old_products_count, models.Product.objects.count())
+        self.assertEqual(models.Product.objects.get(name='new_name1').stock, self.product.stock)
