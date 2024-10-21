@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path
-from shop.views import display_image, ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView
+from shop.views import ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView
 urlpatterns = [
     path("catalog/", ProductListView.as_view(), name="catalog"),
     path('products/<int:pk>', ProductDetailView.as_view(), name='product_detail'),

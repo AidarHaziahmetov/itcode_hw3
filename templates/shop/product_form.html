@@ -12,7 +12,7 @@
 {% block content %}
     <h1>{% block header %}{% endblock %}</h1>
 
-    <form method="post" enctype="multipart/form-data" class="product-create-form">
+    <form method="post" class="product-create-form">
     {% csrf_token %}
     {{ form }}
 
