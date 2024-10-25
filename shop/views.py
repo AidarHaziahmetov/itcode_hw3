@@ -4,9 +4,8 @@ from typing import Type
 from PIL import Image
 from django.conf import settings
 from django.http import HttpResponse
-from django.template.backends.utils import csrf_input
-from django.urls import reverse_lazy, reverse
-from django.views.decorators.csrf import csrf_exempt
+from django.urls import reverse_lazy
+from drf_spectacular.views import SpectacularAPIView, SpectacularSwaggerView
 from django.views.generic import (
     ListView,
     TemplateView,
@@ -16,13 +15,26 @@ from django.views.generic import (
     DeleteView,
 )
 from django_filters.views import FilterView
+from rest_framework import viewsets
 
 from shop.forms import ProductForm
-from shop.models import Product
+from shop.models import Product, Category
 from shop.filters import ProductFilter
+from shop import serializers
 
 
-# Create your views here.
+def display_image(request, path_to_image):
+    """Отображает скачанное изображение."""
+
+    try:
+        full_image_path = os.path.join(settings.MEDIA_ROOT, *path_to_image.split('/'))
+        image_data = Image.open(full_image_path)
+        response: HttpResponse = HttpResponse(content_type="image/jpeg")
+        image_data.save(response, format="JPEG")
+        return response
+
+    except FileNotFoundError:
+        return HttpResponse("Изображение не найдено", status=404)
 
 
 class ProductListTemplateView(TemplateView):
@@ -70,3 +82,10 @@ class ProductDeleteView(DeleteView):
     success_url = reverse_lazy("catalog")
 
 
+class CategoryAPI(viewsets.ModelViewSet):
+    queryset = Category.objects.all()
+    serializer_class = serializers.CategorySerializer
+
+class ProductAPI(viewsets.ModelViewSet):
+    queryset = Product.objects.all()
+    serializer_class = serializers.ProductSerializer
