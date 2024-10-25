@@ -20,6 +20,7 @@ from django.urls import path
 from shop.views import ProductListView, ProductDetailView, ProductCreateView, ProductUpdateView, ProductDeleteView
 
 urlpatterns = [
+
     path("admin/", admin.site.urls),
     path("catalog/", ProductListView.as_view(), name="catalog"),
     path('products/<int:pk>', ProductDetailView.as_view(), name='product_detail'),
